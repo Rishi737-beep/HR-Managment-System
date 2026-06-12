@@ -1,0 +1,16 @@
+package com.nexushr.repository;
+
+import com.nexushr.entity.Notification;
+import com.nexushr.entity.NotificationStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+    
+    List<Notification> findByRecipientIdOrderByCreatedAtDesc(Long recipientId);
+    
+    List<Notification> findByRecipientIdAndStatusOrderByCreatedAtDesc(Long recipientId, NotificationStatus status);
+}
