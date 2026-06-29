@@ -68,15 +68,17 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/api/auth/login",
-                                "/api/auth/register",
-                                "/api/auth/refresh",
-                                "/api/auth/forgot-password",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).permitAll()
-                        .anyRequest().authenticated()
+        "/api/auth/login",
+        "/api/auth/register",
+        "/api/auth/refresh",
+        "/api/auth/forgot-password",
+
+        "/api-docs/**",
+        "/v3/api-docs/**",
+
+        "/swagger-ui/**",
+        "/swagger-ui.html"
+).permitAll()                        .anyRequest().authenticated()
                 );
 
         http.authenticationProvider(authenticationProvider());
